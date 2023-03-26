@@ -124,7 +124,7 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "name": "php:7.4-ubi8",
-                            "namespace": "${NAMESPACE}"
+                            "namespace": "developer-build-template"
                         }
                     },
                     "type": "Source"
@@ -206,7 +206,7 @@
                                     }
                                 ],
                                 "image": "${NAME}:latest",
-                                "name": "php-app",
+                                "name": "php",
                                 "ports": [
                                     {
                                         "containerPort": 8080

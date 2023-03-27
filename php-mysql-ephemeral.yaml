@@ -233,15 +233,16 @@ parameters:
   displayName: Name
   name: NAME
   required: true
-  value: php-app
+  value: quotesapi 
 - description: The OpenShift Namespace where the S2I biulder ImageStream resides.
   displayName: Namespace
   name: NAMESPACE
   required: true
-  value: openshift
+  value: developer-build-template
 - description: The URL of the repository with your application source code.
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
+  value: https://github.com/igalvarez/ex288_3
   required: true
 - description: Set this to a branch name, tag or other ref of your repository if you
     are not using the default branch.
@@ -251,8 +252,10 @@ parameters:
     of your repository.
   displayName: Context Directory
   name: CONTEXT_DIR
+  value: quotes
 - description: The exposed hostname that will route to the PHP app service, if left
     blank a value will be defaulted.
+  required: true  
   displayName: Application Hostname
   name: APPLICATION_DOMAIN
 - description: Github trigger secret.  A difficult to guess string encoded as part
@@ -263,17 +266,20 @@ parameters:
   name: GITHUB_WEBHOOK_SECRET
 - displayName: Database Service Name
   name: DATABASE_SERVICE_NAME
-  required: true
   value: mysql
 - displayName: Database Name
   name: DATABASE_NAME
   required: true
-  value: phpapp
+  value: quotesdb
 - displayName: Database User
   name: DATABASE_USER
   required: true
-  value: php
+  value: user1
 - displayName: Database Password
-  from: '[a-zA-Z0-9]{16}'
-  generate: expression
   name: DATABASE_PASSWORD
+  value: mypa55
+  required: true
+- displayName: Mensaje
+  name: GREETING
+  value: IsRAAAAAAAAAAAAAAAA
+  required: true

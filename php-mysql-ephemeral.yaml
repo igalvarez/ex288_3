@@ -238,7 +238,7 @@ parameters:
   displayName: Namespace
   name: NAMESPACE
   required: true
-  value: developer-build-template
+  value: openshift
 - description: The URL of the repository with your application source code.
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL

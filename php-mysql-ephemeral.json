@@ -124,7 +124,7 @@
                         "from": {
                             "kind": "ImageStreamTag",
                             "name": "php:7.4-ubi8",
-                            "namespace": "developer-build-template"
+                            "namespace": "openshift"
                         }
                     },
                     "type": "Source"

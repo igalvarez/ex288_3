@@ -279,7 +279,7 @@ parameters:
   name: DATABASE_PASSWORD
   value: mypa55
   required: true
-- displayName: Mensaje
+- displayName: GREETING
   name: GREETING
   value: IsRAAAAAAAAAAAAAAAA
   required: true

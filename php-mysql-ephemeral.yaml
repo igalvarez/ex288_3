@@ -234,51 +234,57 @@ parameters:
   name: NAME
   required: true
   value: quotesapi 
+
 - description: The OpenShift Namespace where the S2I biulder ImageStream resides.
   displayName: Namespace
   name: NAMESPACE
   required: true
   value: openshift
-- description: The URL of the repository with your application source code.
-  displayName: Git Repository URL
+
+- description: The URL of the repository with your application source code.   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   value: https://github.com/igalvarez/ex288_3
   required: true
-- description: Set this to a branch name, tag or other ref of your repository if you
-    are not using the default branch.
+
+- description: Set this to a branch name, tag or other ref of your repository if you     are not using the default branch.
   displayName: Git Reference
   name: SOURCE_REPOSITORY_REF
-- description: Set this to the relative path to your project if it is not in the root
-    of your repository.
+
+- description: Set this to the relative path to your project if it is not in the root     of your repository.
   displayName: Context Directory
   name: CONTEXT_DIR
   value: quotes
-- description: The exposed hostname that will route to the PHP app service, if left
-    blank a value will be defaulted.
+
+- description: The exposed hostname that will route to the PHP app service, if left    blank a value will be defaulted.
   required: true  
   displayName: Application Hostname
   name: APPLICATION_DOMAIN
+
 - description: Github trigger secret.  A difficult to guess string encoded as part
-    of the webhook URL.  Not encrypted.
   displayName: GitHub Webhook Secret
   from: '[a-zA-Z0-9]{40}'
   generate: expression
   name: GITHUB_WEBHOOK_SECRET
+
 - displayName: Database Service Name
   name: DATABASE_SERVICE_NAME
   value: mysql
+
 - displayName: Database Name
   name: DATABASE_NAME
   required: true
   value: quotesdb
+
 - displayName: Database User
   name: DATABASE_USER
   required: true
   value: user1
+
 - displayName: Database Password
   name: DATABASE_PASSWORD
   value: mypa55
   required: true
+
 - displayName: Saludos
   name: GREETING
   value: IsRAAAAAAAAAAAAAAAA

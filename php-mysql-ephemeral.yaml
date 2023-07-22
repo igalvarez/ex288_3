@@ -241,7 +241,8 @@ parameters:
   required: true
   value: openshift
 
-- description: The URL of the repository with your application source code.   displayName: Git Repository URL
+- description: The URL of the repository with your application source code.  
+  displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   value: https://github.com/igalvarez/ex288_3
   required: true

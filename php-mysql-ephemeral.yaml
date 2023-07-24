@@ -260,6 +260,7 @@ parameters:
   required: true  
   displayName: Application Hostname
   name: APPLICATION_DOMAIN
+  value: quotesapi-developer-build-template.apps-crc.testing
 
 - description: Github trigger secret.  A difficult to guess string encoded as part
   displayName: GitHub Webhook Secret
@@ -286,7 +287,3 @@ parameters:
   value: mypa55
   required: true
 
-- displayName: Saludos
-  name: GREETING
-  value: IsRAAAAAAAAAAAAAAAA
-  required: true

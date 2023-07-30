@@ -87,7 +87,7 @@ objects:
     output:
       to:
         kind: ImageStreamTag
-        name: ${NAME}:latest
+        name: ${NAME}:xxxx
     source:
       contextDir: ${CONTEXT_DIR}
       git:
@@ -98,7 +98,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: php:7.4-ubi8
+          name: php:xxxx
           namespace: ${NAMESPACE}
       type: Source
     triggers:
@@ -203,7 +203,8 @@ objects:
                 name: ${NAME}
           - name: MYSQL_DATABASE
             value: ${DATABASE_NAME}
-          image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el8
+          # image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el8
+          image: mysql:latest
           livenessProbe:
             initialDelaySeconds: 30
             tcpSocket:
@@ -243,6 +244,7 @@ parameters:
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
   required: true
+  value: xxxx
 - description: Set this to a branch name, tag or other ref of your repository if you
     are not using the default branch.
   displayName: Git Reference
@@ -258,6 +260,7 @@ parameters:
 - description: Github trigger secret.  A difficult to guess string encoded as part
     of the webhook URL.  Not encrypted.
   displayName: GitHub Webhook Secret
+  requiered: false
   from: '[a-zA-Z0-9]{40}'
   generate: expression
   name: GITHUB_WEBHOOK_SECRET

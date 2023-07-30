@@ -20,8 +20,8 @@ metadata:
       purposes only.
     template.openshift.io/provider-display-name: Red Hat Training
   creationTimestamp: "2023-03-04T14:24:50Z"
-  name: ex288-php-mysql 
-  namespace: openshift
+  name: php-mysql-ephemeral
+  namespace:  developer-build-template
   resourceVersion: "205433"
   uid: 34cce8d6-6da8-4f57-9ef4-ee1bef0b7535
 objects:
@@ -87,7 +87,7 @@ objects:
     output:
       to:
         kind: ImageStreamTag
-        name: ${NAME}:xxxx
+        name: ${NAME}:latest
     source:
       contextDir: ${CONTEXT_DIR}
       git:
@@ -98,7 +98,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: php:xxxx
+          name: php:7.4-ubi8
           namespace: ${NAMESPACE}
       type: Source
     triggers:
@@ -145,7 +145,7 @@ objects:
                 key: database-password
                 name: ${NAME}
           image: ${NAME}:latest
-          name: php-app
+          name: php
           ports:
           - containerPort: 8080
 - apiVersion: v1
@@ -203,8 +203,7 @@ objects:
                 name: ${NAME}
           - name: MYSQL_DATABASE
             value: ${DATABASE_NAME}
-          # image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el8
-          image: mysql:latest
+          image: image-registry.openshift-image-registry.svc:5000/openshift/mysql:8.0-el8
           livenessProbe:
             initialDelaySeconds: 30
             tcpSocket:
@@ -234,49 +233,57 @@ parameters:
   displayName: Name
   name: NAME
   required: true
-  value: php-app
+  value: quotesapi 
+
 - description: The OpenShift Namespace where the S2I biulder ImageStream resides.
   displayName: Namespace
   name: NAMESPACE
   required: true
   value: openshift
-- description: The URL of the repository with your application source code.
+
+- description: The URL of the repository with your application source code.  
   displayName: Git Repository URL
   name: SOURCE_REPOSITORY_URL
+  value: https://github.com/igalvarez/ex288_3
   required: true
-  value: xxxx
-- description: Set this to a branch name, tag or other ref of your repository if you
-    are not using the default branch.
+
+- description: Set this to a branch name, tag or other ref of your repository if you     are not using the default branch.
   displayName: Git Reference
   name: SOURCE_REPOSITORY_REF
-- description: Set this to the relative path to your project if it is not in the root
-    of your repository.
+
+- description: Set this to the relative path to your project if it is not in the root     of your repository.
   displayName: Context Directory
   name: CONTEXT_DIR
-- description: The exposed hostname that will route to the PHP app service, if left
-    blank a value will be defaulted.
+  value: quotes
+
+- description: The exposed hostname that will route to the PHP app service, if left    blank a value will be defaulted.
+  required: true  
   displayName: Application Hostname
   name: APPLICATION_DOMAIN
+  value: quotesapi-developer-build-template.apps-crc.testing
+
 - description: Github trigger secret.  A difficult to guess string encoded as part
-    of the webhook URL.  Not encrypted.
   displayName: GitHub Webhook Secret
-  requiered: false
   from: '[a-zA-Z0-9]{40}'
   generate: expression
   name: GITHUB_WEBHOOK_SECRET
+
 - displayName: Database Service Name
   name: DATABASE_SERVICE_NAME
-  required: true
   value: mysql
+
 - displayName: Database Name
   name: DATABASE_NAME
   required: true
-  value: phpapp
+  value: quotesdb
+
 - displayName: Database User
   name: DATABASE_USER
   required: true
-  value: php
+  value: user1
+
 - displayName: Database Password
-  from: '[a-zA-Z0-9]{16}'
-  generate: expression
   name: DATABASE_PASSWORD
+  value: mypa55
+  required: true
+

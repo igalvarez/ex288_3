@@ -20,7 +20,5 @@ RUN echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX >> /tmp/test
 RUN /usr/bin/touch /tmp/israaaaaaaaaaaaaaaaaaaaa
 RUN echo one >> ${docroot}/index.html
 
-ONBUILD cp -R src/ ${docroot}/
-
 # Run as a non-privileged user
 USER 1001
